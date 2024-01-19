@@ -4,42 +4,42 @@ This project creates a framework for high level automation by using an **Acquire
 
 This repository can also use multiple machines to accelerate compute times and use image emulators to mimic the behavior of a microscope.
 
-![alt text](https://github.com/michaelpmay/MicroscopyControlAndProcessingMe/blob/main/docs/files/apd.png)
+![alt text](https://github.com/michaelpmay/MicroscopyControlAndProcessingMe/blob/main/content/files/apd.png)
 > *Acquire-Process-Decide Pipelines create a framework for high level automation by builing up on automations created by ```MicroManager``` and ```PycroManager```.*
 
 ### Requirements:
 ...
 
-[**Overview**](docs/content/overview.md)
+[**Overview**](content/pages/overview.md)
 
-[**Installation**](docs/content/installation.md)
+[**Installation**](content/pages/installation.md)
 
-[**Configure the Demo System or Real System**](docs/content/config.md)
+[**Configure the Demo System or Real System**](content/pages/config.md)
 
 [**Configure Software Settings (Distributed Computing, Remote Storage, User Credentials, Logging Verbosity, Device Management)**](docs/configure.md)
 
-[**Example One: Simple Test Acquisition of the MicroManager Demo System**](docs/content/example1.md)
+[**Example One: Simple Test Acquisition of the MicroManager Demo System**](content/pages/example1.md)
 
-[**Example Two: Acquire-Process-Decide using Microscopy Emulation**](docs/content/example2.md)
+[**Example Two: Acquire-Process-Decide using Microscopy Emulation**](content/pages/example2.md)
 
-[**Application 1: Finding twenty-five cells in a real system**](docs/content/application1.md)
+[**Application 1: Finding twenty-five cells in a real system**](content/pages/application1.md)
 
-[**Application 2: Identifying ten puncta and making ten movies in a real system**](docs/content/application2.md)
+[**Application 2: Identifying ten puncta and making ten movies in a real system**](content/pages/application2.md)
 
 ## The rest of the page will discuss a real application of the automation
 
 A three color HiLo microscope with a galvo controlled laser was developed and used for the development of this code. This microscope can acquire 2D images in three colors using inclined light to increase the signal to noise ratio. Device drivers were managed using ```MicroManager```, but interfaces for the control of outside devices (like lasers and custom ```FilterWheels``` and ```GalvoSystems```) were developed. 
 
-![alt text](https://github.com/MunskyGroup/MicroscopyControlAndProcessing/blob/main/docs/files/cartoon.png)
+![alt text](https://github.com/MunskyGroup/MicroscopyControlAndProcessing/blob/main/content/files/cartoon.png)
 > *The schematic of the system shows a three laser HiLo microscope with a galvo laser*
 
-A library of image acquisition can be found [**here**](docs/content/modeling.md), which describes an ```AcquisitionTicket```, that describes all variables and callback functions needed to perform an automated acquisition. This library contains pre-writted tickets that describe a variety of common acquisitions (including loose grids, tight grids, XY position sequences, and  XYZ position sequences).
+A library of image acquisition can be found [**here**](content/pages/modeling.md), which describes an ```AcquisitionTicket```, that describes all variables and callback functions needed to perform an automated acquisition. This library contains pre-writted tickets that describe a variety of common acquisitions (including loose grids, tight grids, XY position sequences, and  XYZ position sequences).
 
 The Acquire-Process-Decide Pipeline was developed to find 25 cells within a region. 
 
 Similarly libraries were written for common ```ImageProcessPipeline```(s), and ```Decisions```, which take images and create and data, and take take data to propose new acquisitions.
 
-![alt text](https://github.com/MunskyGroup/MicroscopyControlAndProcessing/blob/main/docs/files/emulated.png)
+![alt text](https://github.com/MunskyGroup/MicroscopyControlAndProcessing/blob/main/content/files/emulated.png)
 > *Automated data acquisitions using the image emulator. An eight by eight grid of images
 was acquired using the ‘grid search’ procedure using an image emulator that replaces acquired images with
 emulated ones. (A). Images which were believed to contain three or more nuclei using Cellpose were
@@ -50,7 +50,7 @@ determination of the number of nuclei.*
 
 The loose grid image searching pipeline was run on the real microscope to analyze its performance.
 
-![alt text](https://github.com/MunskyGroup/MicroscopyControlAndProcessing/blob/main/docs/files/real.png)
+![alt text](https://github.com/MunskyGroup/MicroscopyControlAndProcessing/blob/main/content/files/real.png)
 > *Automated data acquisitions of fluorescently labeled mRNA. An eight by eight grid of
 images was acquired using the ‘grid search’ procedure using smFISH stained cytoplasmic GAPDH exons.
 (A) Images which were believed to contain three or more cells using the Cellpose cytoplasm model were
@@ -61,7 +61,7 @@ accuracy and sensitivity to Cellpose for this set of images.*
 
 A puncta detection method was developed to idenfity images with bright spots to create a framework for identifying phenotypes in images and using an ```ImageDetection``` method to accept or reject images. In this example a detection method was created for identifying cells with puncta using the Laplacian of Gaussians and re-imaging positions which were estimated to have at least one puncta. 
 
-![alt text](https://github.com/MunskyGroup/MicroscopyControlAndProcessing/blob/main/docs/files/puncta.png)
+![alt text](https://github.com/MunskyGroup/MicroscopyControlAndProcessing/blob/main/content/files/puncta.png)
 >  *Median image processing on two slides. The mean intensity method and the Cellpose identification
 method were compared using grid searches on two different slides with the same imaging conditions.
 (A) The mean intensity method was used to determine which regions of interest (ROIs) to keep for re-imaging.
