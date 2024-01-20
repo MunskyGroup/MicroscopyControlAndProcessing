@@ -26,6 +26,20 @@ This repository can also use multiple machines to accelerate compute times and u
 
 [**Application 2: Identifying ten puncta and making ten movies in a real system**](content/pages/application2.md)
 
+## Below are several Jupyter notebooks to help the user become acquainted with the functionality: 
+
+[**Example 1: Getting Started Demo**](notebooks/Example1_Getting_Started_Demo.ipynb)
+
+[**Example 2: Acquiring Sequences of Images Demo**](notebooks/Example2_Acquiring_Sequences_Of_Images_Demo.ipynb)
+
+[**Example 3: Adding Logic and Processing**](notebooks/Example3_Adding_Logic_And_Processing.ipynb)
+
+[**Example 4: Adding Image Post-processing**](notebooks/Example4_Adding_Image_PostProcessing.ipynb)
+
+[**Example 5: Making Decisions and Adaptive Acquisitions**](notebooks/Example5_MakingDecisionsAndAdaptiveAcquisitions.ipynb)
+
+[**Example 6: Using the Emulator**](notebooks/Example6_Using_The_emulator.ipynb)
+
 ## The rest of the page will discuss a real application of the automation
 
 A three color HiLo microscope with a galvo controlled laser was developed and used for the development of this code. This microscope can acquire 2D images in three colors using inclined light to increase the signal to noise ratio. Device drivers were managed using ```MicroManager```, but interfaces for the control of outside devices (like lasers and custom ```FilterWheels``` and ```GalvoSystems```) were developed. 
