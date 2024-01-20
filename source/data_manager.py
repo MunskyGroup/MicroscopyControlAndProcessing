@@ -150,7 +150,7 @@ class IOImage(iIOSystem):
             raise TypeError
         if not isinstance(value,(np.ndarray,list)):
             raise TypeError
-        cv2.imwrite(key,value)
+        cv2.imwrite(key,value,[cv2.IMWRITE_TIFF_FILE, 0])
 
     def load(self,key):
         if not isinstance(key,str):

@@ -473,3 +473,44 @@ class APDFunctionLibrary(iAPDSystemLibrary):
 
         pipeline.f = f
         return pipeline
+    
+def viewAcquisition(dataset,n=5,color=False):
+    from skimage.io import imread
+    import sys,os
+    import matplotlib.pyplot as plt
+    files = os.listdir(dataset.path)
+    i = 0
+    for file in files:
+        if i>=n:
+            break   
+        if file.endswith('.tif'):
+            img = imread(dataset.path+'/'+file)
+            if img.shape[-1]==3 or img.shape[-1]==4:         
+                img = np.moveaxis(img,len(img.shape)-1,len(img.shape)-3)
+
+            if color:
+                keepDims = 3
+            else:
+                keepDims = 2
+            print(f'Image has size {img.shape}')
+            if len(img.shape)>keepDims:
+                # permute N dimensional array to put the lst two dimesions first and then slice to the first two dimensions
+                old  = [len(img.shape)-2,len(img.shape)-1] + [i for i in range(len(img.shape)-keepDims,len(img.shape)-2)]
+                new =  range(keepDims)
+                img = np.moveaxis(img,old,new)
+                # slice N-dimensional array to the first two dimensions
+                while len(img.shape)>keepDims:
+                    if color:
+                        img = img[:,:,:,0]                    
+                    else:
+                        img = img[:,:,0]
+                print('Slicing to last two dimensions')
+            if color:
+                for i in range(img.shape[2]):
+                    plt.figure()
+                    plt.imshow(img[:,:,i])
+                    plt.show()
+            else:
+                plt.figure()
+                plt.imshow(img)
+                plt.show()
