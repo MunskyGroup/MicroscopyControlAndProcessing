@@ -1013,7 +1013,7 @@ class AcquisitionPluginLibrary:
         plugin = builder.getPlugin()
         return plugin
 
-    def xyLooseGrid(self,xRangeROI,yRangeROI,xyOriginROI,calibration=NullCalibration(),timeRange=None,zRange=None,channelRange=None,name='xyLooseGrid',show_display=True,emulator=None,laserIntensities=None):
+    def xyLooseGrid(self,xRangeROI,yRangeROI,xyOriginROI,calibration=NullCalibration(),timeRange=None,zRange=None,channelRange=None,name='xyLooseGrid',show_display=False,emulator=None,laserIntensities=None):
         builder = AcquisitionBuilder()
         if timeRange:
             builder.addTimedEvents(timeRange[0], timeRange[1])
