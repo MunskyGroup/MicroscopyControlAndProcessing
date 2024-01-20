@@ -1,0 +1,8 @@
+data/users/default/acquisition/*/*
+data/users/default/acquisition/*
+source/__pycache__/*
+.DS_Store
+content/.DS_Store
+data/history.log
+external/__pycache__/fish_analyses.cpython-311.pyc
+notebooks/.ipynb_checkpoints/*

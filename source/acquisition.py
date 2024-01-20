@@ -1102,7 +1102,7 @@ class AcquisitionPluginLibrary:
         if timeRange:
             builder.addTimedEvents(timeRange[0],timeRange[1])
         if zRange:
-            builder.addZEvents(zRange[0], zRange[0], zRange[0])
+            builder.addZEvents(zRange[0], zRange[1], zRange[2])
         if channelRange:
             builder.addChannelEvents(channelRange[0],channelRange[1],channelRange[2])
         sequence=calibration.map(sequence)
