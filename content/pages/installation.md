@@ -1,4 +1,4 @@
-![alt text](https://github.com/michaelpmay/MicroscopyControlAndProcessingMe/blob/main/docs/files/installationBanner.png)
+[](../files/installationBanner.png)
 
 ## Software PreRequisites
 
@@ -48,4 +48,3 @@ git clone https://github.com/MunskyGroup/MicroscopyControlAndProcessing.git
 ```
 ./install/Linux.sh 3.10    or   ./install/Linux.sh 3.11
 ```
-
