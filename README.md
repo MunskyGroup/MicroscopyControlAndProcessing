@@ -10,21 +10,11 @@ This repository can also use multiple machines to accelerate compute times and u
 ### Requirements:
 ...
 
-[**Overview**](content/pages/overview.md)
+[](content/files/Intro.png)
 
 [**Installation**](content/pages/installation.md)
 
-[**Configure the Demo System or Real System**](content/pages/config.md)
-
-[**Configure Software Settings (Distributed Computing, Remote Storage, User Credentials, Logging Verbosity, Device Management)**](docs/configure.md)
-
-[**Example One: Simple Test Acquisition of the MicroManager Demo System**](content/pages/example1.md)
-
-[**Example Two: Acquire-Process-Decide using Microscopy Emulation**](content/pages/example2.md)
-
-[**Application 1: Finding twenty-five cells in a real system**](content/pages/application1.md)
-
-[**Application 2: Identifying ten puncta and making ten movies in a real system**](content/pages/application2.md)
+[**Configure Software Settings for Demo or Real Systems (Distributed Computing, Remote Storage, User Credentials, Logging Verbosity, Device Management)**](content/pages/configure.md)
 
 ## Below are several Jupyter notebooks to help the user become acquainted with the functionality: 
 
