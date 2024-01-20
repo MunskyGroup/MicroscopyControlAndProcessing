@@ -6,3 +6,5 @@ content/.DS_Store
 data/history.log
 external/__pycache__/fish_analyses.cpython-311.pyc
 notebooks/.ipynb_checkpoints/*
+venv/
+source/__pycache__/
