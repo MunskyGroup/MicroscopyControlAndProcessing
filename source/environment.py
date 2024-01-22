@@ -64,7 +64,7 @@ class Backend(iBackend):
     calibration=None
     verbosity=None
     image_processor=None
-    def __init__(self,config=None,verbosity="full"):
+    def __init__(self,config=None,verbosity="silent"):
         if config:
             if not isinstance(config,str):
                 raise TypeError

@@ -123,7 +123,7 @@ class PostProcessNode(iPostProcessNode):
             if hash_key not in hashed_items:
                 hashed_items[hash_key]=[]
             hashed_items[hash_key].append(items[i])
-            print(hashed_items)
+            #print(hashed_items)
         output = OutputMapper()
         for i in hashed_items:
             chunks=[]
@@ -136,7 +136,7 @@ class PostProcessNode(iPostProcessNode):
             task = Task(self.function,self,chunks,metadatas,hashed_items[i])
             (chunk, chunk_output) = task()
             output[i]=chunk_output
-        print(output)
+        #print(output)
         return (dataset,output)
 
 

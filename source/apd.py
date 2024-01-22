@@ -1,7 +1,7 @@
 from environment import *
 from decision import *
 from acquisition import AcquisitionPluginLibrary
-from postprocessors import PostProcessPipeline
+from source.postprocessors import PostProcessPipeline
 from calibration import NullCalibration
 from distributed_computing import DistributedComputeLocal
 from verbosity import Verbosity
@@ -76,26 +76,31 @@ class APDSystem:
             raise TypeError
         if not isinstance(process, PostProcessPipeline):
             raise TypeError
-        if not isinstance(decision,iDecision):
+        if not not decision and not isinstance(decision,iDecision):
             raise TypeError
         settings={'saveInitialImages':saveInitialImages,'saveDataset':saveDataset,'saveFinalImages':saveFinalImages}
         self.chain.append([acquisition,process,decision,settings])
 
     def run(self):
+        allProcessedData=[]
         for i in range(len(self.chain)):
-            [acquisition, processor, decision,settings]=self.chain[i]
+            [acquisition, processor, decision, settings]=self.chain[i]
             images=self.acquire(acquisition)
             if settings['saveInitialImages']:
                 self.backend.datamanager.put(images,settings['saveInitialImages'])
             dataset=processor.process(images,acquisition)
-            print(dataset)
+            allProcessedData.append(dataset)
+            #print(f'dataset = \n{dataset}')
             if settings['saveDataset']:
                 self.backend.datamanager.put(dataset,settings['saveDataset'])
+            if not decision:
+                continue
             new_acquisition=decision.propose(dataset,acquisition)
             if new_acquisition:
                 self.acquire(new_acquisition)
                 if settings['saveFinalImages']:
                     self.backend.datamanager.put(images, settings['saveFinalImages'])
+        return allProcessedData
 
     def acquire(self,acquisition):
         dataset = self.backend.acquire(acquisition)
@@ -514,3 +519,29 @@ def viewAcquisition(dataset,n=5,color=False):
                 plt.figure()
                 plt.imshow(img)
                 plt.show()
+
+def parseProcessedData(pds,dataFields):
+    # Parse the processed data into a list of the form:
+    #   [[positionIndex, timeIndex, dataField1, dataField2, ...], ...]
+    # where the data fields are the ones specified in <dataFields>.
+    parsedDataList = []
+    dataMetric = []
+
+    pd = pds[0]
+    m = len(pd.keys)
+    n = len(dataFields)
+    parsedDataArray = np.zeros([m,n+2])
+
+    keys = list(pd.keys)
+    for i_m, key in enumerate(keys):
+        #positionIndex = int(str(key).split("'position', ")[1].split(")")[0])
+        #timeIndex = int(str(key).split("'time', ")[1].split(")")[0])
+        parsedDataArray[i_m, 0] = int(str(key).split("'position', ")[1].split(")")[0])
+        parsedDataArray[i_m, 2] = int(str(key).split("'time', ")[1].split(")")[0])
+        for i_n, dataField in enumerate(dataFields):
+            parsedDataArray[i_m, 2 + i_n] = pd[key][dataField][0]
+    #parsedDataList.append([positionIndex, timeIndex, [pd[key][dataField] for dataField in dataFields]])
+    # dataMetric.append([tmp[2] for tmp in parsedDataList])
+    # if len(dataMetric) == 1:
+    #     dataMetric = dataMetric[0]    
+    return parsedDataArray
