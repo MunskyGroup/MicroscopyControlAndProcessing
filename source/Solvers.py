@@ -135,8 +135,9 @@ class FSPGeneratorCore:
         for i in range(numReactions[1]):
             stateSpaceStoich = stateSpaceStoich + self.makeSingleReactionInfGen( i, time)
         return stateSpaceStoich
+
     def makeSingleReactionInfGen(self,dims,i):
-        #print('Error: Overwrite this function to complete functionality')
+        print('Error: Overwrite this function to complete functionality')
 
     def connectStates(self,fromState,toState,stateSpaceStoich,reactionIndex,time):
         propensity=self.model.evaluatePropensity(time,fromState)[reactionIndex]
@@ -184,8 +185,9 @@ class FSPGenerator:
         elif N==1:
             core=FSPGenerator1D(model,dims,gBool)
         else:
-            #print('Error: Generator is only supported up for 1, 2 and 3 unique species')
+            print('Error: Generator is only supported up for 1, 2 and 3 unique species')
         return core
+    
 class FSPGenerator1D(FSPGeneratorCore):
     def makeSingleReactionInfGen(self,reactionIndex,time):
         xMap=list(range(0,self.dims[0]))

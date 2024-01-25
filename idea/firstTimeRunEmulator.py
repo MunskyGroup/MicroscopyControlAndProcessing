@@ -28,6 +28,8 @@ simulated_image,dataframe_cells_in_image = fa.MicroscopeSimulation.make_simulate
 
 # Plotting
 number_color_channels = simulated_image.shape[2]
+
+import matplotlib.pyplot as plt
 fig, ax = plt.subplots(1,number_color_channels, figsize=(15, 7))
 # Plotting the heatmap of a section in the image
 for i in range (number_color_channels):

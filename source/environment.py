@@ -14,7 +14,6 @@ from pycromanager import Acquisition
 from datetime import datetime
 from verbosity import Verbosity,ReportFull,ReportSilent
 from skimage import io
-from globals import Globals
 from hooks import HookSetLibrary
 class iBackend:
     '''master control of modules'''
@@ -655,8 +654,7 @@ class Environment:
 
     def acquisitionLoopWithBreak(self,maxIter=None):
         self.interface.menuAcquisitionLoopReminder()
-        globals=g.Globals()
-        globals.ACQUISITION_IS_IN_LOOP=True
+        g.Globals().ACQUISITION_IS_IN_LOOP=True
         if maxIter==None:
             maxIterations=10000
         else:
@@ -688,8 +686,7 @@ class Environment:
                 numLoopTimes=0
 
     def stopAllLoops(self):
-        globals = g.Globals()
-        globals.ACQUISITION_IS_IN_LOOP = False
+        g.Globals().ACQUISITION_IS_IN_LOOP = False
 
     def loadConfiguration(self,configFileName=None):
         if configFileName:
@@ -733,12 +730,11 @@ class EnvironmentBuilder:
             raise KeyError
 
     def setAuthentication(self,key):
-        globals=g.Globals()
         if not isinstance(key,str):
             raise TypeError
         if key in ['local','Local','LOCAL','l','L']:
             self.authentication=auth.Authentication()
-            self.authentication.validator=auth.ValidatorLocal(globals.PASS_LOCAL_FILE,globals.NAMES_LOCAL_FILE)
+            self.authentication.validator=auth.ValidatorLocal(g.Globals().PASS_LOCAL_FILE, g.Globals().NAMES_LOCAL_FILE)
         elif key in ['nopass','NoPass','NOPASS','nopassword','NoPassword','NOPASSWORD','N','n']:
             self.authentication = auth.Authentication()
             self.authentication.validator = auth.ValidatorNoPassword()

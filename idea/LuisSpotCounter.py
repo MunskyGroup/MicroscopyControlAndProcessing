@@ -19,8 +19,8 @@ class SpotCounterLuis(iImageCalculator):
         '''Luis Version somethisg complicated'''
         pass
 
-
+import numpy as np
 
 image=np.array(512,512)
 imageCalculator=SpotCounterLuis()
-dats=imageCalculator.process(image,**kwargs)
+dats=imageCalculator.process(image)

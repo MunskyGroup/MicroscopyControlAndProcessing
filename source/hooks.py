@@ -3,8 +3,10 @@ from scipy.signal import convolve2d
 import numpy as np
 import scipy
 import time
+from cell_detection import *
 from PIL import Image
 from scipy import signal
+import pycromanager
 from pycromanager import Core
 class iHooks:
     '''a set of many hook objects that are used in the acquisition and changed the behavior'''
@@ -503,6 +505,7 @@ class HookSetLibrary:
                 #self.shown_image = np.full((512*2, 512*2, 4), 125, dtype=np.uint8)
                 self.oldPosition=None
             print('PostCamera {0}'.format(event))
+            bridge=pycromanager.Bridge(convert_camel_case=False,debug=False)
             core=bridge.get_core()
             time.sleep(.05)
             core.snap_image()
@@ -583,6 +586,7 @@ class HookSetLibrary:
                 self.channelMap=self.input['channelMap']
                 #self.shown_image = np.full((128, 128, 3), 125, dtype=np.uint8)
             print('PostHardware {0}'.format(event))
+            bridge = pycromanager.Bridge(convert_camel_case=False,debug=False)
             core = bridge.get_core()
             time.sleep(.05)
             core.snap_image()
@@ -857,6 +861,7 @@ class HookSetLibrary:
         hooks = HookSet()
         hooks.name = 'snap'
         def HookPostHardware(self,event ,stack):
+            bridge = pycromanager.Bridge(convert_camel_case=False,debug=False)
             core = bridge.get_core()
             time.sleep(.05)
             core.snap_image()
@@ -887,6 +892,7 @@ class HookSetLibrary:
             interpolator=interpolate.interp2d(xRange,yRange,zRange)
             z=interpolator(x,y)[0]
             print(int(z))
+            bridge = pycromanager.Bridge(convert_camel_case=False,debug=False)
             core=bridge.get_core()
             core.set_position(int(z))
             time.sleep(0.1)
@@ -906,6 +912,7 @@ class HookSetLibrary:
             if self.isInitialized==False:
                 self.initialize()
                 self.isInitialized=True
+            bridge = pycromanager.Bridge(convert_camel_case=False,debug=False)
             core=bridge.get_core()
             for i in range(self.zRange):
                 core.move(self.zRange[i])

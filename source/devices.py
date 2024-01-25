@@ -724,42 +724,40 @@ class DeviceLibrary(iDeviceLibrary):
     devices=None
     deviceMap=None
     def __init__(self):
-        globals = g.Globals()
         self.devices=[]
         self.deviceMap=dict()
         self.devices.append('DemoCamera')
-        self.deviceMap['DemoCamera']=[globals.KEY_DEVICE_CAMERAS]
+        self.deviceMap['DemoCamera']=[g.Globals().KEY_DEVICE_CAMERAS]
         self.devices.append('DemoLaser')
-        self.deviceMap['DemoLaser'] = [globals.KEY_DEVICE_LASERS]
+        self.deviceMap['DemoLaser'] = [g.Globals().KEY_DEVICE_LASERS]
         self.devices.append('DemoFilterWheel')
-        self.deviceMap['DemoFilterWheel'] = [globals.KEY_DEVICE_FILTERS]
+        self.deviceMap['DemoFilterWheel'] = [g.Globals().KEY_DEVICE_FILTERS]
         self.devices.append('DemoStage')
-        self.deviceMap['DemoStage'] = [globals.KEY_DEVICE_STAGES]
+        self.deviceMap['DemoStage'] = [g.Globals().KEY_DEVICE_STAGES]
         self.devices.append('DemoZStage')
-        self.deviceMap['DemoZStage'] = [globals.KEY_DEVICE_ZSTAGES]
+        self.deviceMap['DemoZStage'] = [g.Globals().KEY_DEVICE_ZSTAGES]
         self.devices.append('DemoPiezoStage')
-        self.deviceMap['DemoPiezoStage'] = [globals.KEY_DEVICE_PIEZOSTAGE]
+        self.deviceMap['DemoPiezoStage'] = [g.Globals().KEY_DEVICE_PIEZOSTAGE]
         self.devices.append('DemoStateDevice')
-        self.deviceMap['DemoStateDevice'] = [globals.KEY_DEVICE_STATES]
+        self.deviceMap['DemoStateDevice'] = [g.Globals().KEY_DEVICE_STATES]
         self.devices.append('DemoArduino')
-        self.deviceMap['DemoArduino'] = [globals.KEY_DEVICE_STATES]
+        self.deviceMap['DemoArduino'] = [g.Globals().KEY_DEVICE_STATES]
         self.devices.append('DemoGalvo')
-        self.deviceMap['DemoGalvo'] = [globals.KEY_DEVICE_GALVOS]
+        self.deviceMap['DemoGalvo'] = [g.Globals().KEY_DEVICE_GALVOS]
         self.devices.append('TSLabArduino')
-        self.deviceMap['TSLabArduino'] = [globals.KEY_DEVICE_STATES]
+        self.deviceMap['TSLabArduino'] = [g.Globals().KEY_DEVICE_STATES]
         self.devices.append('TSLabGalvo')
-        self.deviceMap['TSLabGalvo'] = [globals.KEY_DEVICE_GALVOS]
+        self.deviceMap['TSLabGalvo'] = [g.Globals().KEY_DEVICE_GALVOS]
         self.devices.append('DemoXYZFStage')
-        self.deviceMap['DemoXYZFStage'] = [globals.KEY_DEVICE_STAGES,globals.KEY_DEVICE_ZSTAGES,globals.KEY_DEVICE_PIEZOSTAGE]
+        self.deviceMap['DemoXYZFStage'] = [g.Globals().KEY_DEVICE_STAGES,g.Globals().KEY_DEVICE_ZSTAGES,g.Globals().KEY_DEVICE_PIEZOSTAGE]
         self.devices.append('LaserDevice_Coherent')
-        self.deviceMap['LaserDevice_Coherent']=[globals.KEY_DEVICE_LASERS]
+        self.deviceMap['LaserDevice_Coherent']=[g.Globals().KEY_DEVICE_LASERS]
         self.devices.append('LaserDevice_Vortran')
-        self.deviceMap['LaserDevice_Vortran'] = [globals.KEY_DEVICE_LASERS]
+        self.deviceMap['LaserDevice_Vortran'] = [g.Globals().KEY_DEVICE_LASERS]
 
 
     def listDeviceType(self,type):
-        globals=g.Globals()
-        if type not in globals.KEY_DEVICES:
+        if type not in g.Globals().KEY_DEVICES:
             raise KeyError
         list = []
         for device in self.devices:
@@ -888,9 +886,8 @@ class ExternalDeviceManager(iExternalDeviceManager):
     devices=None
     _instance = None
     def __init__(self):
-        globals=g.Globals()
         self.devices=dict()
-        for key in globals.KEY_DEVICES:
+        for key in g.Globals().KEY_DEVICES:
             self.devices[key]=[]
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
@@ -921,8 +918,7 @@ class ExternalDeviceManager(iExternalDeviceManager):
 
     def listDeviceInterfaces(self):
         list=[]
-        globals=g.Globals()
-        interfaces=globals.KEY_DEVICES
+        interfaces=g.Globals().KEY_DEVICES
         for i in interfaces:
             devices=self.devices[i]
             for d in devices:
@@ -931,8 +927,7 @@ class ExternalDeviceManager(iExternalDeviceManager):
 
     def listDeviceHardware(self):
         list = []
-        globals = g.Globals()
-        interfaces = globals.KEY_DEVICES
+        interfaces = g.Globals().KEY_DEVICES
         for i in interfaces:
             devices = self.devices[i]
             for d in devices:
@@ -948,9 +943,8 @@ class ExternalDeviceManager(iExternalDeviceManager):
 
     @property
     def properties(self):
-        globals=g.Globals()
         prop=dict()
-        for key in globals.KEY_DEVICES:
+        for key in g.Globals().KEY_DEVICES:
             prop[key]=self.devices[key]
         return prop
 

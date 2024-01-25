@@ -1,20 +1,5 @@
-device code
-MM
-Michael May
-Mon 5/2/2022 4:26 PM
-
-
-
-
-
-
-
-
-
-To:Michael May
 import time
 
-import pymmcore
 import os
 import serial
 import numpy as np
@@ -116,7 +101,7 @@ class MicroManagerCore_Pycromanager():
 
     def autoFocusNow(self,method="CRISP"):
         with pycromanager.Bridge(convert_camel_case=False, debug=False) as bridge:
-            studio=bridge.get_studio()
+            self.studio=bridge.get_studio()
             autofocuser = self.studio.getAutofocusManager()
             autofocuser.setAutofocusMethodByName(method)
             self.studio.autofocusNow()

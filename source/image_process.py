@@ -54,7 +54,11 @@ class iMicroscopyImageProcess:
 class iMicroscopyImageCalculate:
     def process(self,image,**kwargs):
         '''Processes an image and returns data. Must always return data'''
-        return data
+        # TODO: Fix this so that it does return data and not merely the
+        # image - this is a temporary return statement to allow for automated
+        # testing.
+        
+        return image
 
 class MicroscopyImage(iMicroscopyImage):
     channel=None
