@@ -1,0 +1,33 @@
+name: MicroscopyControlAndProcessing
+
+packages:
+    - setuptools
+    - cloudpickle
+    - dask
+    - distributed
+    - fastapi
+    - joblib
+    - keras
+    - matplotlib
+    - numpy
+    - pandas==1.5.3
+    - Pillow
+    - pyserial
+    - requests
+    - requests-oauthlib
+    - scikit-image
+    - scikit-learn
+    - scipy
+    - uvicorn
+    - seaborn
+    - pip:
+        - big-fish
+        - cellpose==2.2.2
+        - fpdf
+        - joypy
+        - matplotlib-scalebar
+        - opencv-python
+        - pycromanager==0.27.5
+        - pysmb
+        - schedule
+        - torch
