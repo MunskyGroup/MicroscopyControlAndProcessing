@@ -1,6 +1,8 @@
 from environment import *
 from pycromanager import Bridge,Core
-from processing_service import
+# TODO: Fix import statement below or remove altogether if unnecessary
+#from processing_service import
+
 builder=EnvironmentBuilder()
 builder.setInterface('headless') #headless or gui
 builder.setRootDataPath('') #sets the root folder for the held data use windows to mount the Z drive with nas!
