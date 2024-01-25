@@ -1,6 +1,6 @@
 name: MicroscopyControlAndProcessing
 
-packages:
+dependencies:
     - setuptools
     - cloudpickle
     - dask
