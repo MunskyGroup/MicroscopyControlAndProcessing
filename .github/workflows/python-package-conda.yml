@@ -26,6 +26,7 @@ jobs:
       run: |
         conda create -n mcp-${{ matrix.python-version }} python=${{ matrix.python-version }}
         conda env update --file environment.yaml --name mcp-${{ matrix.python-version }}
+        conda init
         conda activate mcp-${{ matrix.python-version }}
         conda list
     - name: Lint with flake8
