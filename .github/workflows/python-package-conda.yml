@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build-linux:
-    runs-on: [macos, ubuntu-latest, windows]
+    runs-on: ubuntu-latest
     continue-on-error: true
     strategy:
       max-parallel: 5
