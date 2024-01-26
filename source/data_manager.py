@@ -8,7 +8,8 @@ from calibration import MatrixMultiCalibration
 import urllib.request
 from pathlib import Path
 import shutil
-from pysmb import SMBConnection
+from smb.SMBConnection import SMBConnection
+
 class iDataManager:
     '''Data manager load and save key value pairs'''
     def save(self,key,value):
