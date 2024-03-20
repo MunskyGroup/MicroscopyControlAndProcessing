@@ -1,5 +1,7 @@
 # Microscopy Control And Image Processing
 
+Kyle was here.
+
 This project creates a framework for high level automation by using an **Acquire-Process-Decide** mechanism. These mechanisms can be used to create different **acquisition** tickets which aquire data, easy to implement **image processors** that create data from images, and **decisions** which create data and propose new acuisitions.
 
 This repository can also use multiple machines to accelerate compute times and use image emulators to mimic the behavior of a microscope.
